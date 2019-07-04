@@ -18,10 +18,11 @@
     "lint": "tslint -c tslint.json src/*.ts",
     "tdd": "concurrently -r -p '' -k 'npm run watch' 'npm run watch:test'",
     "test": "ava --verbose",
-    "prepublish": "npm test",
+    "prepublish": "npm run snyk-protect; npm test",
     "pretest": "npm run build",
     "watch": "tsc -w",
-    "watch:test": "ava -w"
+    "watch:test": "ava -w",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -51,7 +52,8 @@
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
     "mz": "^2.6.0",
-    "stdin": "0.0.1"
+    "stdin": "0.0.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@types/cli-color": "^0.3.29",
@@ -80,5 +82,6 @@
       "./test/resources/*.json"
     ],
     "vebose": true
-  }
+  },
+  "snyk": true
 }
